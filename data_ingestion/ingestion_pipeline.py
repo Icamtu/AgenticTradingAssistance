@@ -3,7 +3,7 @@ import tempfile
 from typing import List
 from dotenv import load_dotenv
 from langchain_core.documents import Document
-from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
+from langchain_community.document_loaders import PyMuPDFLoader, Docx2txtLoader # Changed PyPDFLoader to PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_pinecone import PineconeVectorStore
 from utils.model_loader import ModelLoader
@@ -57,8 +57,11 @@ class DataIngestion:
                     temp_path = temp_file.name
 
                 if file_ext == ".pdf":
-                    loader = PyPDFLoader(temp_path)
-                    documents.extend(loader.load())
+                    loader = PyMuPDFLoader(temp_path) # Changed to PyMuPDFLoader
+                    try:
+                        documents.extend(loader.load())
+                    except Exception as pdf_error:
+                        print(f"Error loading PDF {uploaded_file.filename} with PyMuPDFLoader: {pdf_error}. Skipping this file.")
                 elif file_ext == ".docx":
                     loader = Docx2txtLoader(temp_path)
                     documents.extend(loader.load())

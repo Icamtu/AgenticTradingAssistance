@@ -58,19 +58,19 @@ def retriever_tool(question: str):
 def tavily_tool(question: str):
     """Use this tool to search the web for recent or specific information."""
     try:
-        tavily_api_key = os.getenv("TAVILY_API_KEY", st.session_state.get("TAVILY_API_KEY", ""))
-        if not tavily_api_key:
-            return "Error: Tavily API key not found."
+       
+        tavily_api_key = os.getenv("TAVILY_API_KEY",st.session_state.get("PINECONE_API_KEY", ""))
+        
         
         search_tool = TavilySearchResults(
             api_key=tavily_api_key, 
-            max_results=config["tavily"]["max_results"],
+            max_results=config["tools"]["tavily"]["max_results"],
             search_depth="advanced",
             include_answer=True,
             include_raw_content=True
         )
         
-        results = search_tool.invoke(query)
+        results = search_tool.invoke(question)
         return results
     except Exception as e:
         return f"Error using Tavily search: {str(e)}. Please ensure the Tavily API key is valid and the service is available."
