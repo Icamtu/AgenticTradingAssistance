@@ -9,4 +9,3 @@ fastapi[all]
 uvicorn
 langchain-pinecone
 pypdf
--e .

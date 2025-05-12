@@ -1,0 +1,63 @@
+# Agentic Trading Assistance
+
+A project to assist with trading decisions using AI agents.
+
+## Setup
+
+### Keys
+
+The following keys need to be mentioned inside the `.env` file:
+
+```
+POLYGON_API_KEY
+GOOGLE_API_KEY
+TAVILY_API_KEY
+GROQ_API_KEY
+PINECONE_API_KEY
+```
+
+### Running the FastAPI Endpoint
+
+```
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### Running the Streamlit UI
+
+```
+streamlit run streamlit_ui.py
+```
+
+### Installing Requirements
+
+```
+pip install -r requirements.txt
+```
+
+### Creating the Environment
+
+```
+conda create -p env python=3.10 -y
+```
+
+### Activating the Environment (cmd)
+
+```
+conda activate <env_path>
+```
+
+### Activating the Environment (Git Bash)
+
+```
+source activate ./env
+```
+
+## Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them with clear, concise messages.
+4.  Test your changes thoroughly.
+5.  Submit a pull request.
