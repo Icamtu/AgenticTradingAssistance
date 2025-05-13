@@ -1,3 +1,20 @@
+---
+title: AgenticTradingAssistant
+emoji: 🐨
+colorFrom: blue
+colorTo: red
+sdk: streamlit
+sdk_version: 1.42.0
+app_file: streamlit_ui.py
+pinned: false
+license: apache-2.0
+short_description: Refined AgenticTradingAssistant
+---
+
+
+
+
+
 # Agentic Trading Assistance
 
 A project to assist with trading decisions using AI agents.
