@@ -14,6 +14,11 @@ jobs:
           fetch-depth: 0
           lfs: true # Enable Git LFS
 
+      - name: Install git-filter-repo
+        run: |
+          sudo apt-get update
+          sudo apt-get install git-filter-repo
+
       - name: Remove large file from history
         run: |
           git filter-repo --force --path Rag_Documents/layout-parser-paper.pdf --invert-path
