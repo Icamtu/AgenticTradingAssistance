@@ -1,0 +1,38 @@
+import toml
+
+# Read the contents of requirements.txt
+with open("requirements.txt", "r") as f:
+    requirements = f.read().splitlines()
+
+# Filter out editable installs (e.g., "-e .") and create a list of packages
+packages = [req for req in requirements if not req.startswith("-e .")]
+
+# Create the Pipfile data structure
+pipfile_data = {
+    "default": {
+        "packages": {package: "*" for package in packages},  # Basic packages, versions can be specified if needed
+        "dev-packages": {}
+    },
+    "source": [
+        {
+            "url": "https://pypi.org/simple",
+            "verify_ssl": True,
+            "name": "pypi"
+        }
+    ],
+    "requires": {
+        "python_version": "3.10"  # Or the appropriate Python version.  You can change it.
+    }
+}
+
+# Convert the data structure to a TOML-formatted string
+pipfile_content = toml.dumps(pipfile_data)
+
+# Print the Pipfile content
+print(pipfile_content)
+
+# Save the Pipfile content to a file
+with open("Pipfile", "w") as f:
+    f.write(pipfile_content)
+
+print("Pipfile successfully created and saved to disk")
