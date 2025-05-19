@@ -26,4 +26,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push --force https://huggingface.co/spaces/kamaleswar/AgenticTradeAssistant main
+          git push --force "https://kamaleswar:${HF_TOKEN}@huggingface.co/spaces/kamaleswar/AgenticTradeAssistant" main
